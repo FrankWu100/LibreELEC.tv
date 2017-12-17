@@ -17,13 +17,13 @@
 #  ################################################################################
 
 PKG_NAME="qt5"
-PKG_VERSION="5.7.0"
-PKG_REV="1"
+PKG_VERSION="5.9"
+PKG_REV="2"
 PKG_ARCH="any"
 PKG_LICENSE="OSS"
 PKG_SITE="https://nightlies.plex.tv"
-PKG_URL="http://download.qt.io/official_releases/qt/5.7/5.7.0/single//qt-everywhere-opensource-src-$PKG_VERSION.tar.xz"
-PKG_SOURCE_DIR="qt-everywhere-opensource-src-${PKG_VERSION}"
+PKG_URL="http://download.qt.io/official_releases/qt/$PKG_VERSION/$PKG_VERSION.$PKG_REV/single/qt-everywhere-opensource-src-$PKG_VERSION.$PKG_REV.tar.xz"
+PKG_SOURCE_DIR="qt-everywhere-opensource-src-${PKG_VERSION}.${PKG_REV}"
 PKG_PRIORITY="optional"
 PKG_SECTION="lib"
 PKG_SHORTDESC="Qt GUI toolkit"
@@ -37,7 +37,7 @@ PKG_BASE_BUILD_DEPENDS_TARGET="bzip2 Python zlib:host zlib libpng tiff dbus glib
 
 # determine QPA related packages
 if [ "$DISPLAYSERVER" = "x11" ]; then
-  PKG_QT_QPA="libXcursor libXtst nss libxkbcommon pciutils libXi libXScrnSaver"
+  PKG_QT_QPA="libXcursor libXtst libxkbcommon pciutils libXi libXScrnSaver"
   QT_QPA_OPTS="-qpa xcb -opengl desktop -no-kms -no-directfb -qt-xcb"
 elif [ ! "$OPENGLES" = "no" ]; then
   PKG_QT_QPA="$OPENGLES libevdev libwebp"
