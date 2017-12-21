@@ -37,6 +37,10 @@ case $PROJECT in
     WeTek_Hub|Odroid_C2)
         PKG_VERSION="aml"
     ;;
+
+    Rockchip)
+        PKG_VERSION="rockchip"
+    ;;
 esac
 
 # ensure we get proper debug info on mpv
@@ -61,8 +65,16 @@ fi
 
 unpack() {
   mkdir $BUILD/${PKG_NAME}-${PKG_VERSION}
-  
-  git clone -b $PKG_VERSION git@github.com:plexinc/mpv.git $BUILD/${PKG_NAME}-${PKG_VERSION}/.
+
+  case $PROJECT in
+    Rockchip)
+      git clone -b $PKG_VERSION git@github.com:LongChair/mpv.git $BUILD/${PKG_NAME}-${PKG_VERSION}/.
+    ;;
+
+    *)
+      git clone -b $PKG_VERSION git@github.com:plexinc/mpv.git $BUILD/${PKG_NAME}-${PKG_VERSION}/.
+    ;;
+  esac
 
   cd  $BUILD/${PKG_NAME}-${PKG_VERSION}/
   git remote add upstream https://github.com/mpv-player/mpv.git
