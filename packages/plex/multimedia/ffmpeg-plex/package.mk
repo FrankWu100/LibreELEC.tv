@@ -41,11 +41,6 @@ get_graphicdrivers
 DEBUG=$PLEX_DEBUG
 
 case $PROJECT in
-  WeTek_Hub|Odroid_C2)
-    PKG_DEPENDS_TARGET="${PKG_DEPENDS_TARGET} libamcodec"
-    PKG_VERSION="amlvideo"
-  ;;
-
   Rockchip)
     PKG_DEPENDS_TARGET="${PKG_DEPENDS_TARGET} rkmpp"
     PKG_VERSION="master"
@@ -56,10 +51,6 @@ esac
 
 unpack() {
   case $PROJECT in
-    WeTek_Hub|Odroid_C2)
-      git clone -b $PKG_VERSION git@github.com:wm4/FFmpeg.git $BUILD/${PKG_NAME}-${PKG_VERSION}
-    ;;
-
     Rockchip)
       git clone -b $PKG_VERSION git@github.com:LongChair/FFmpeg.git $BUILD/${PKG_NAME}-${PKG_VERSION}
     ;;
@@ -125,9 +116,6 @@ case $PROJECT in
     PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET bcm2835-driver"
   ;;
 
-  WeTek_Hub|Odroid_C2)
-    FFMPEG_AML="--enable-aml"
-  ;;
 esac
 
 pre_configure_target() {
