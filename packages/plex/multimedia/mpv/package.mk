@@ -34,10 +34,6 @@ PKG_CONFIGURE_OPTS_TARGET="--enable-libmpv-shared --disable-libsmbclient --disab
 
 # Temporarilly use another branch & repo for AML devices
 case $PROJECT in
-    WeTek_Hub|Odroid_C2)
-        PKG_VERSION="aml"
-    ;;
-
     Rockchip)
         PKG_VERSION="rockchip"
     ;;
