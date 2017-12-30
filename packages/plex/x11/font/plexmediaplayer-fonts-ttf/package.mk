@@ -16,7 +16,7 @@
 #  along with OpenELEC.  If not, see <http://www.gnu.org/licenses/>.
 ################################################################################
 
-PKG_NAME="${MEDIACENTER,,}-fonts-ttf"
+PKG_NAME="plexmediaplayer-fonts-ttf"
 PKG_VERSION="1"
 PKG_REV="1"
 PKG_ARCH="any"
@@ -35,11 +35,11 @@ make_target() {
 }
 
 makeinstall_target() {
-  mkdir -p $INSTALL/usr/share/fonts/${MEDIACENTER,,}
-  cp *.ttf *.ttc $INSTALL/usr/share/fonts/${MEDIACENTER,,}
+  mkdir -p $INSTALL/usr/share/fonts/plexmediaplayer
+  cp *.ttf *.ttc $INSTALL/usr/share/fonts/plexmediaplayer
 }
 
 post_install() {
-  mkfontdir $INSTALL/usr/share/fonts/${MEDIACENTER,,}
-  mkfontscale $INSTALL/usr/share/fonts/${MEDIACENTER,,}
+  mkfontdir $INSTALL/usr/share/fonts/plexmediaplayer
+  mkfontscale $INSTALL/usr/share/fonts/plexmediaplayer
 }

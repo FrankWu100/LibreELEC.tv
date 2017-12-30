@@ -114,7 +114,7 @@
   SFTP_SERVER="yes"
 
 # build and install OpenVPN support (yes / no)
-  OPENVPN_SUPPORT="yes"
+  OPENVPN_SUPPORT="no"
 
 # build and install diskmounter support (udevil)
 # this service provide auto mounting support for external drives in the
@@ -213,6 +213,9 @@ DISTRO_DEPS_PKG="python-pip"
 			-no-feature-quick-particles -no-feature-webengine-spellchecker -no-feature-webengine-printing-and-pdf" 
 
   QT_EXTRA_FLAGS=--force-debug-info
+
+# use our own fonts
+  CUSTOM_FONTS="plexmediaplayer-fonts-ttf"
 
 # Define our build variables
 # PMP repo
