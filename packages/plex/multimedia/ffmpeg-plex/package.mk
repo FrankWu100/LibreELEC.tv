@@ -45,12 +45,23 @@ case $PROJECT in
     PKG_DEPENDS_TARGET="${PKG_DEPENDS_TARGET} libamcodec"
     PKG_VERSION="amlvideo"
   ;;
+
+  Rockchip)
+    PKG_DEPENDS_TARGET="${PKG_DEPENDS_TARGET} rkmpp"
+    PKG_VERSION="master"
+    FFMPEG_RKMPP="--enable-rkmpp"
+  ;;
+
 esac
 
 unpack() {
   case $PROJECT in
     WeTek_Hub|Odroid_C2)
       git clone -b $PKG_VERSION git@github.com:wm4/FFmpeg.git $BUILD/${PKG_NAME}-${PKG_VERSION}
+    ;;
+
+    Rockchip)
+      git clone -b $PKG_VERSION git@github.com:LongChair/FFmpeg.git $BUILD/${PKG_NAME}-${PKG_VERSION}
     ;;
 
     *)
@@ -155,7 +166,8 @@ configure_target() {
               --build-suffix="" \
               --disable-static \
               --enable-shared \
-              --disable-version3 \
+              --enable-version3 \
+              --enable-libdrm \
               --disable-doc \
               $FFMPEG_DEBUG \
               $FFMPEG_PIC \
@@ -179,7 +191,8 @@ configure_target() {
               $FFMPEG_FPU \
               --disable-symver \
               $FFMPEG_AML \
-              $FFMPEG_MMAL
+              $FFMPEG_MMAL \
+              $FFMPEG_RKMPP
 }
 
 pre_install()
